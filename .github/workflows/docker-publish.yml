@@ -51,7 +51,7 @@ jobs:
           context: .
           platforms: linux/amd64 # 这里选择你要编译的系统架构
           push: false
-          tags: ${{ secrets.DOCKERHUB_USERNAME }}/gdbserver-all-in-one # 这里设置镜像的名称，并推送到hub
+          tags: ${{ secrets.DOCKER_USERNAME }}/gdbserver-all-in-one # 这里设置镜像的名称，并推送到hub
           file: Dockerfile # 这里手动选择 dockerfile
           build-args: "GDB_VERSION=11.2"
           cache-from: type=registry,ref=${{ secrets.DOCKER_USERNAME }}/gdbserver-all-in-one.cache # 这里使用来自 hub 的缓存
