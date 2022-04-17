@@ -35,11 +35,27 @@ jobs:
       - name: Setup Docker QEMU
         id: qemu
         uses: docker/setup-qemu-action@2d4bfe71c9c7c6adb935665efb1a651cc8e799ba
+        with:
+          image: tonistiigi/binfmt:latest
+          platforms: all
 
       - name: Available platforms
         run: echo ${{ steps.qemu.outputs.platforms }}
+
       - name: Setup Docker buildx
         uses: docker/setup-buildx-action@79abd3f86f79a9d68a23c75a09a9a85889262adf
+
+      - name: Build and push Docker images # 这是 docekr 部署的 action 
+        uses: docker/build-push-action@v2.10.0
+        with:
+          context: .
+          platforms: linux/amd64 # 这里选择你要编译的系统架构
+          push: false
+          tags: ${{ secrets.DOCKERHUB_USERNAME }}/${{ github.repository }} # 这里设置镜像的名称，并推送到hub
+          file: Dockerfile # 这里手动选择 dockerfile
+          build-args: [GDB_VERSION=11.2]
+          cache-from: type=registry,ref=${{ secrets.DOCKERHUB_USERNAME }}/${{ github.repository }}.cache # 这里使用来自 hub 的缓存
+          cache-to: type=registry,ref=${{ secrets.DOCKERHUB_USERNAME }}/${{ github.repository }}.cache,mode=max # 这里将缓存写入 hub
 
       - name: Log in to Docker Hub
         uses: docker/login-action@1edf6180e07d2ffb423fc48a1a552855c0a1f508
