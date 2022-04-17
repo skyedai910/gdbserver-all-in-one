@@ -7,4 +7,5 @@ mkdir out
 cd build
 ../configure --prefix=/gdb/out --program-prefix=${GLIBC_VERSION}-linux- --disable-werror --enable-debug --disable-shared --enable-static
 make -j8 && make install
-ls ../out && file ../out/${GLIBC_VERSION}-linux-gdbserver
+ls ../out
+file ../out/${GDB_VERSION}-linux-gdbserver
