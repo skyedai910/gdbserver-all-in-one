@@ -54,8 +54,8 @@ jobs:
           tags: ${{ secrets.DOCKERHUB_USERNAME }}/${{ github.repository }} # 这里设置镜像的名称，并推送到hub
           file: Dockerfile # 这里手动选择 dockerfile
           build-args: "GDB_VERSION=11.2"
-          cache-from: type=registry,ref=${{ secrets.DOCKERHUB_USERNAME }}/${{ github.repository }}.cache # 这里使用来自 hub 的缓存
-          cache-to: type=registry,ref=${{ secrets.DOCKERHUB_USERNAME }}/${{ github.repository }}.cache,mode=max # 这里将缓存写入 hub
+          cache-from: type=registry,ref=${{ secrets.DOCKER_USERNAME }}/${{ github.repository }}.cache # 这里使用来自 hub 的缓存
+          cache-to: type=registry,ref=${{ secrets.DOCKER_USERNAME }}/${{ github.repository }}.cache,mode=max # 这里将缓存写入 hub
 
       - name: Log in to Docker Hub
         uses: docker/login-action@1edf6180e07d2ffb423fc48a1a552855c0a1f508
