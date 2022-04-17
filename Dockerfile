@@ -18,7 +18,7 @@ COPY gdb_builder.sh /root/
 RUN chmod +x /root/gdb_builder.sh && \
     /root/gdb_builder.sh
 
-RUN apt autoremove -yRUN apt-get remove -y \
+RUN apt-get remove -y \
     wget \
     gcc \
     make \
