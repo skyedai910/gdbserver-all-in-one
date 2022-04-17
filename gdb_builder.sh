@@ -5,4 +5,5 @@ cd gdb-${GDB_VERSION}
 mkdir build
 cd build
 ../configure --prefix=/gdb/out --program-prefix=${GLIBC_VERSION}-linux- --disable-werror --enable-debug=yes --enable-static=yes
+make -j8 && make install
 ls ../out && file ../out/${GLIBC_VERSION}-linux-gdbserver
