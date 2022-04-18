@@ -11,7 +11,7 @@ mkdir out
 ../configure\
  --prefix=../out\
  --program-suffix=-${TARGETARCH}-${GDB_VERSION}\
- --host=mips-linux\
+ --host=${TARGETARCH}-linux\
  --disable-werror\
  --enable-debug\
  --disable-shared\
