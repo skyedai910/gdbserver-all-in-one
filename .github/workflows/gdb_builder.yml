@@ -23,12 +23,10 @@ jobs:
 
       - name: Setup gdb & buildroot env
         run: |
-          export GDB_VERSION=$GDB_VERSION
           sudo chmod +x ./setup_env.sh && sudo ./setup_env.sh
       
       - name: arm cross building
         run: |
-          export GDB_VERSION=$GDB_VERSION
           export TARGETARCH=arm
           sudo chmod +x ./builder.sh && sudo ./builder.sh
 
