@@ -3,12 +3,12 @@ name: Docker
 on:
   schedule:
     - cron: '24 14 * * *'
-  push:
-    branches: [ main ]
-    # Publish semver tags as releases.
-    # tags: [ 'v*.*.*' ]
-  pull_request:
-    branches: [ main ]
+  # push:
+  #   branches: [ main ]
+  #   # Publish semver tags as releases.
+  #   # tags: [ 'v*.*.*' ]
+  # pull_request:
+  #   branches: [ main ]
 
 env:
   # Use docker.io for Docker Hub if empty
