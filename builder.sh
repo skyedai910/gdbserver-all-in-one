@@ -1,3 +1,8 @@
+#!/bin/bash
+
+GDB_VERSION=$1
+TARGETARCH=$2
+
 cd buildroot
 make clean
 cp ../config/${TARGETARCH}-config .config

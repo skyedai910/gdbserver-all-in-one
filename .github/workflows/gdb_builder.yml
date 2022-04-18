@@ -23,11 +23,9 @@ jobs:
 
       - name: Setup gdb & buildroot env
         run: |
-          export GDB_VERSION=11.2
-          sudo chmod +x ./setup_env.sh && sudo ./setup_env.sh
+          sudo chmod +x ./setup_env.sh && sudo ./setup_env.sh $GDB_VERSION
       
       - name: arm cross building
         run: |
-          export TARGETARCH=arm
-          sudo chmod +x ./builder.sh && sudo ./builder.sh
+          sudo chmod +x ./builder.sh && sudo ./builder.sh $GDB_VERSION arm
 

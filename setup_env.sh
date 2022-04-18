@@ -1,7 +1,6 @@
 #!/bin/bash
 
-echo $GDB_VERSION
-echo skye231
+GDB_VERSION=$1
 
 sudo apt-get update -y
 sudo apt-get install libncurs* -y
