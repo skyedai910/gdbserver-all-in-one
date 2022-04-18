@@ -28,4 +28,19 @@ jobs:
       - name: arm cross building
         run: |
           sudo chmod +x ./builder.sh && sudo ./builder.sh $GDB_VERSION arm
+      
+      - name: Upload artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: my-artifact
+          path: /releases/arm* # or path/to/artifact
 
+      - name: aarch64 cross building
+        run: |
+          sudo chmod +x ./builder.sh && sudo ./builder.sh $GDB_VERSION aarch64
+
+      - name: Upload artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: my-artifact
+          path: /releases/aarch64* # or path/to/artifact
