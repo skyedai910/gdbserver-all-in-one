@@ -11,7 +11,7 @@ on:
     branches: [ main ]
 
 env:
-  GDB_VERSION: '11.2'
+  GDB_VERSION: 11.2
 
 jobs:
   build:
