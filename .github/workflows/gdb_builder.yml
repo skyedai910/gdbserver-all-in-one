@@ -24,11 +24,6 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v3
 
-      - name: apt install env
-        run: |
-          apt-get update && 
-          apt-get install \
-          libncurs* \
-          libncurses5-dev patch
-
+      - name: Setup env
+        run: sudo chmod +x ./setup_env.sh && sudo ./setup_env.sh
 
