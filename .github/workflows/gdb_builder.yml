@@ -23,6 +23,7 @@ jobs:
 
       - name: Setup gdb & buildroot env
         run: |
+          export GDB_VERSION=11.2
           sudo chmod +x ./setup_env.sh && sudo ./setup_env.sh
       
       - name: arm cross building
