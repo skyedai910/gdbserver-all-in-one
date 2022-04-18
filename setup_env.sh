@@ -1,5 +1,8 @@
 #!/bin/bash
 
+echo $GDB_VERSION
+echo skye231
+
 sudo apt-get update -y
 sudo apt-get install libncurs* -y
 sudo apt-get install libncurses5-dev patch -y
