@@ -5,6 +5,8 @@ cd gdb-${GDB_VERSION}
 mkdir build
 mkdir out
 cd build
-../configure --prefix=/gdb/out --program-prefix=${GLIBC_VERSION}-linux- --disable-werror --enable-debug --disable-shared --enable-static
+../configure --prefix=/gdb-${GDB_VERSION}/out --program-suffix=-${TARGETARCH}${TARGETVARIANT}-${GDB_VERSION} --disable-werror --enable-debug --disable-shared --enable-static
 make -j8 && make install
-ls ../out && file ../out/${GLIBC_VERSION}-linux-gdbserver
+cd ../out/bin
+tar tar -zcvf ${TARGETARCH}${TARGETVARIANT}-${GDB_VERSION}.tar.gz *
+ls
