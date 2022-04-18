@@ -21,7 +21,7 @@ COPY gdb_builder.sh /root/
 RUN chmod +x /root/gdb_builder.sh
 RUN /root/gdb_builder.sh
 
-RUN apt autoremove -yRUN apt-get remove -y \
+RUN apt-get remove -y \
     wget \
     file \
     gcc g++ \
