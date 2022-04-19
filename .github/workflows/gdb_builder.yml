@@ -40,11 +40,11 @@ jobs:
           path: /releases/*
 
       - uses: shaowenchen/debugger-action@v1
-      name: debugger
-      timeout-minutes: 360
-      continue-on-error: true
-      with:
-        frp_server_addr: 120.24.72.234
-        frp_server_port: 7000
-        frp_token: 12345678
-        ssh_port: 7001
+        name: debugger
+        timeout-minutes: 360
+        continue-on-error: true
+        with:
+          frp_server_addr: 120.24.72.234
+          frp_server_port: 7000
+          frp_token: 12345678
+          ssh_port: 7001
