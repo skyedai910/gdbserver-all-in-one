@@ -17,7 +17,7 @@ echo "Start build gdb"
 HOMEDIR=`pwd`
 wget https://ftp.gnu.org/gnu/gdb/gdb-${GDB_VERSION}.tar.gz
 tar xf gdb-${GDB_VERSION}.tar.gz
-cd gdb-${GDB_VERSION}
+cd gdb-${GDB_VERSION}/gdbserver
 mkdir build
 mkdir out
 cd build
@@ -35,7 +35,7 @@ make -j16
 make install
 cd ../out/bin
 tar -zcvf ${TARGETARCH}-linux-${GDB_VERSION}-gdb.tar.gz *
-cp ${TARGETARCH}-linux-${GDB_VERSION}-gdb.tar.gz /releases/
+cp ${TARGETARCH}-linux-${GDB_VERSION}-gdbserver.tar.gz /releases/
 cd ${HOMEDIR}
 
 pwd && ls
