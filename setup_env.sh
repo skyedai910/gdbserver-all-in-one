@@ -1,7 +1,5 @@
 #!/bin/bash
 
-GDB_VERSION=$1
-
 sudo apt-get update -y
 sudo apt-get install -y libncurs*
 sudo apt-get install -y\
@@ -11,13 +9,11 @@ sudo apt-get install -y\
  gawk\
  libgetopt-argvfile-perl\
  libexpat1-dev\
- libgmp-dev\
- libgmp3-dev\
+ libgmp*\
+ libexpat1-dev\
  bison\
  autoconf
 
 mkdir /releases
 
 git clone https://github.com/buildroot/buildroot.git
-wget https://ftp.gnu.org/gnu/gdb/gdb-${GDB_VERSION}.tar.gz
-tar xf gdb-${GDB_VERSION}.tar.gz

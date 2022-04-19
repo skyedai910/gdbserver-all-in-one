@@ -14,27 +14,33 @@ export PATH=`pwd`/output/host/bin:$PATH
 cd ..
 
 echo "Start build gdb"
+HOMEDIR=`pwd`
+wget https://ftp.gnu.org/gnu/gdb/gdb-${GDB_VERSION}.tar.gz
+tar xf gdb-${GDB_VERSION}.tar.gz
 cd gdb-${GDB_VERSION}
 mkdir build
 mkdir out
 cd build
 ../configure\
  --prefix=`pwd`/../out\
- --program-suffix=-${TARGETARCH}-${GDB_VERSION}\
+ --program-prefix=${TARGETARCH}-linux-${GDB_VERSION}-\
  --host=${TARGETARCH}-linux\
  --disable-werror\
  --enable-debug\
  --disable-shared\
- --enable-static
-make -j8 && make install
+ --enable-static\
+ CC=${HOMEDIR}/buildroot/output/host/bin/${TARGETARCH}-linux-gcc\
+ CXX=${HOMEDIR}/buildroot/output/host/bin/${TARGETARCH}-linux-g++
+make -j16
+make install
 cd ../out/bin
-tar -zcvf ${TARGETARCH}-${GDB_VERSION}-gdb.tar.gz *
-cp ${TARGETARCH}-${GDB_VERSION}-gdb.tar.gz /releases/
-cd ../..
-rm -rf build out
-make distclean
-rm ./config.cache
-cd ..
+tar -zcvf ${TARGETARCH}-linux-${GDB_VERSION}-gdb.tar.gz *
+cp ${TARGETARCH}-linux-${GDB_VERSION}-gdb.tar.gz /releases/
+cd ${HOMEDIR}
+
+pwd && ls
+
+rm -rf gdb-${GDB_VERSION} gdb-${GDB_VERSION}.tar.gz
 
 echo "Check releases"
 ls /releases
