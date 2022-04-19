@@ -9,8 +9,8 @@ make clean
 cp ../config/${TARGETARCH}-config .config
 make
 export PATH=`pwd`/output/host/bin:$PATH
-tar -zcvf ${TARGETARCH}-buildroot.tar.gz output/host/bin/
-cp ${TARGETARCH}-buildroot.tar.gz /releases/
+# tar -zcvf ${TARGETARCH}-buildroot.tar.gz output/host/bin/
+# cp ${TARGETARCH}-buildroot.tar.gz /releases/
 cd ..
 
 echo "Start build gdb"
@@ -32,6 +32,8 @@ tar -zcvf ${TARGETARCH}-${GDB_VERSION}-gdb.tar.gz *
 cp ${TARGETARCH}-${GDB_VERSION}-gdb.tar.gz /releases/
 cd ../..
 rm -rf build out
+make distclean
+rm ./config.cache
 cd ..
 
 echo "Check releases"
