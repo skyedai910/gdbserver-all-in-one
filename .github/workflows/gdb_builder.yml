@@ -37,4 +37,4 @@ jobs:
         uses: actions/upload-artifact@v3
         with:
           name: my-artifact
-          path: /releases/* # or path/to/artifact
+          path: /releases/*

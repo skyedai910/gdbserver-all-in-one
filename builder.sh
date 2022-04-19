@@ -9,8 +9,8 @@ make clean
 cp ../config/${TARGETARCH}-config .config
 make
 export PATH=`pwd`/output/host/bin:$PATH
-# tar -zcvf ${TARGETARCH}-buildroot.tar.gz output/host/bin/
-# cp ${TARGETARCH}-buildroot.tar.gz /releases/
+tar -zcvf ${TARGETARCH}-buildroot.tar.gz output/host/*
+cp ${TARGETARCH}-buildroot.tar.gz /releases/
 cd ..
 
 echo "Start build gdb"
