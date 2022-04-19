@@ -27,15 +27,19 @@ cd gdb-${GDB_VERSION}
 mkdir build
 mkdir out
 cd build
+# export PATH=/home/runner/work/gdbserver-all-in-one/gdbserver-all-in-one/buildroot/output/host/bin:$PATH
+# export GDB_VERSION=11.2
+# export TARGETARCH=arm
+# export HOMEDIR=/home/runner/work/gdbserver-all-in-one/gdbserver-all-in-one
 ../configure\
  --prefix=${HOMEDIR}/gdb-${GDB_VERSION}/out\
  --program-prefix=${TARGETARCH}-linux-${GDB_VERSION}\
  --host=${TARGETARCH}-linux\
- --disable-werror\
- LDFLAGS=-static
+ --with-gmp=${HOMEDIR}/buildroot/output/host\
+ LDFLAGS="-L${HOMEDIR}/buildroot/output/host/lib"
 make -j 16
 make install
-cd ../out/bin
+# cd ../out/bin
 tar -zcvf ${TARGETARCH}-linux-${GDB_VERSION}-gdb.tar.gz *
 cp ${TARGETARCH}-linux-${GDB_VERSION}-gdbserver.tar.gz /releases/
 cd ${HOMEDIR}
