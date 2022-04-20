@@ -1,4 +1,4 @@
-name: gdb all in one
+name: gdbserver builder
 
 on:
   schedule:
@@ -29,9 +29,17 @@ jobs:
         run: |
           sudo chmod +x ./builder.sh && sudo ./builder.sh $GDB_VERSION arm
 
-      # - name: aarch64 cross building
-      #   run: |
-      #     sudo chmod +x ./builder.sh && sudo ./builder.sh $GDB_VERSION aarch64
+      - name: aarch64 cross building
+        run: |
+          sudo chmod +x ./builder.sh && sudo ./builder.sh $GDB_VERSION aarch64
+
+      - name: mips cross building
+        run: |
+          sudo chmod +x ./builder.sh && sudo ./builder.sh $GDB_VERSION mips
+
+      - name: riscv cross building
+        run: |
+          sudo chmod +x ./builder.sh && sudo ./builder.sh $GDB_VERSION riscv
 
       - name: Upload artifact
         uses: actions/upload-artifact@v3
