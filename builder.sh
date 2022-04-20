@@ -22,6 +22,7 @@ tar xf gdb-${GDB_VERSION}.tar.gz
 cd gdb-${GDB_VERSION}
 mkdir build
 mkdir out
+cd build
 ../configure\
  --prefix=${HOMEDIR}/gdb-${GDB_VERSION}/out\
  --program-prefix=${TARGETARCH}-linux-${GDB_VERSION}-\

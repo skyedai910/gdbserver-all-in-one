@@ -37,9 +37,9 @@ jobs:
         run: |
           sudo chmod +x ./builder.sh && sudo ./builder.sh $GDB_VERSION mips
 
-      - name: riscv cross building
+      - name: riscv64 cross building
         run: |
-          sudo chmod +x ./builder.sh && sudo ./builder.sh $GDB_VERSION riscv
+          sudo chmod +x ./builder.sh && sudo ./builder.sh $GDB_VERSION riscv64
 
       - name: Upload artifact
         uses: actions/upload-artifact@v3
