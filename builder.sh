@@ -22,16 +22,10 @@ tar xf gdb-${GDB_VERSION}.tar.gz
 cd gdb-${GDB_VERSION}
 mkdir build
 mkdir out
-cd build
-# export PATH=/home/runner/work/gdbserver-all-in-one/gdbserver-all-in-one/buildroot/output/host/bin:$PATH
-# export GDB_VERSION=11.2
-# export TARGETARCH=arm
-# export HOMEDIR=/home/runner/work/gdbserver-all-in-one/gdbserver-all-in-one
 ../configure\
  --prefix=${HOMEDIR}/gdb-${GDB_VERSION}/out\
  --program-prefix=${TARGETARCH}-linux-${GDB_VERSION}-\
- --host=${TARGETARCH}-linux\
- --with-gmp=/usr/local/gmp-6.2.0\
+ --host=${TARGETARCH}-linux
 make -j16 all-gdbserver CFLAGS=-static CXXFLAGS=-static
 make install-strip-gdbserver
 cd ../out/bin
