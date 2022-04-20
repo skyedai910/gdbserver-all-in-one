@@ -12,10 +12,6 @@ make
 export PATH=`pwd`/output/host/bin:$PATH
 tar -zcvf ${TARGETARCH}-buildroot.tar.gz output/host/*
 cp ${TARGETARCH}-buildroot.tar.gz /releases/
-
-echo "test buildroot"
-${TARGETARCH}-linux-gcc --version
-
 cd ..
 
 
@@ -33,13 +29,12 @@ cd build
 # export HOMEDIR=/home/runner/work/gdbserver-all-in-one/gdbserver-all-in-one
 ../configure\
  --prefix=${HOMEDIR}/gdb-${GDB_VERSION}/out\
- --program-prefix=${TARGETARCH}-linux-${GDB_VERSION}\
+ --program-prefix=${TARGETARCH}-linux-${GDB_VERSION}-\
  --host=${TARGETARCH}-linux\
- --with-gmp=${HOMEDIR}/buildroot/output/host\
- LDFLAGS="-L${HOMEDIR}/buildroot/output/host/lib"
-make -j 16
-make install
-# cd ../out/bin
+ --with-gmp=/usr/local/gmp-6.2.0\
+make -j16 all-gdbserver CFLAGS=-static CXXFLAGS=-static
+make install-strip-gdbserver
+cd ../out/bin
 tar -zcvf ${TARGETARCH}-linux-${GDB_VERSION}-gdb.tar.gz *
 cp ${TARGETARCH}-linux-${GDB_VERSION}-gdbserver.tar.gz /releases/
 cd ${HOMEDIR}

@@ -16,8 +16,7 @@ sudo apt-get install -y\
  autoconf\
  texinfo\
  m4\
- flex\
- python-dev
+ flex
 
 mkdir /releases
 
