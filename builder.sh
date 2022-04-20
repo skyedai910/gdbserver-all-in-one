@@ -35,11 +35,7 @@ cd build
 make -j16 all-gdbserver CFLAGS=-static CXXFLAGS=-static
 make install-strip-gdbserver
 cd ../out/bin
-tar -zcvf ${TARGETARCH}-linux-${GDB_VERSION}-gdb.tar.gz *
+tar -zcvf ${TARGETARCH}-linux-${GDB_VERSION}-gdbserver.tar.gz *
 cp ${TARGETARCH}-linux-${GDB_VERSION}-gdbserver.tar.gz /releases/
 cd ${HOMEDIR}
 rm -rf gdb-${GDB_VERSION} gdb-${GDB_VERSION}.tar.gz
-
-
-echo "Check releases"
-ls /releases
