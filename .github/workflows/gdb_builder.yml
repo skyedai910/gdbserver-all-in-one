@@ -37,6 +37,10 @@ jobs:
         run: |
           sudo chmod +x ./builder.sh && sudo ./builder.sh $GDB_VERSION mips
 
+      - name: mips64 cross building
+        run: |
+          sudo chmod +x ./builder.sh && sudo ./builder.sh $GDB_VERSION mips64
+
       - name: riscv64 cross building
         run: |
           sudo chmod +x ./builder.sh && sudo ./builder.sh $GDB_VERSION riscv64
